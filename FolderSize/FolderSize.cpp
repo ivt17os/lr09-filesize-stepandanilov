@@ -28,7 +28,7 @@ void dfs() {
         // 	здесь будет обход в глубину
         // }
         // else {// это файл
-        // size+=res....
+		size+=res.nFileSizeLow;
         // }
     } while (FindNextFile(hFind, &res) != 0);
     FindClose(hFind);
