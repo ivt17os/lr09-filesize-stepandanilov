@@ -30,10 +30,14 @@ void dfs() {
          }
 	
          else if  ( _tcscmp(res.cFileName,TEXT(".")) != 0 && _tcscmp(res.cFileName,TEXT("..")) != 0) 
-		 {// ‎עמ פאיכ
-				count++;
-			 	_tprintf(TEXT("file #%d is <%s>\n"), count, res.cFileName);
-				size+=(res.nFileSizeHigh * (MAXDWORD+1)) + res.nFileSizeLow;
+		 {
+			long long filesize;
+			filesize = res.nFileSizeHigh;
+			filesize = filesize<<32;
+			filesize += res.nFileSizeLow;
+			count++;
+			_tprintf(TEXT("file #%d is <%s>\n"), count, res.cFileName);
+			size+=filesize;
          }
     } while (FindNextFile(hFind, &res) != 0);
     FindClose(hFind);
