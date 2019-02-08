@@ -33,7 +33,7 @@ void dfs() {
 		 {// ‎עמ פאיכ
 				count++;
 			 	_tprintf(TEXT("file #%d is <%s>\n"), count, res.cFileName);
-				size+=res.nFileSizeLow;
+				size+=(res.nFileSizeHigh * (MAXDWORD+1)) + res.nFileSizeLow;
          }
     } while (FindNextFile(hFind, &res) != 0);
     FindClose(hFind);
